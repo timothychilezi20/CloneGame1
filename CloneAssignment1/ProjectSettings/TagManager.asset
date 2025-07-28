@@ -12,8 +12,8 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - Props
+  - 'Enemy '
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3232832829
+    locked: 0
+  - name: Props
+    uniqueID: 1265458329
+    locked: 0
+  - name: Enemy
+    uniqueID: 1536596483
     locked: 0
