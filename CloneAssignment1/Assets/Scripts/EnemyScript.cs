@@ -9,8 +9,8 @@ public class EnemyScript : MonoBehaviour
     Transform target;
     Vector2 moveDirection;
 
-    float health;
-    float maxHealth = 3f;
+    public float health;
+    public float maxHealth = 3f;
 
     private void Awake()
     {
