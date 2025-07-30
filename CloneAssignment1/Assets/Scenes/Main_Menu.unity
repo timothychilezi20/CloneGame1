@@ -298,7 +298,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -528,7 +528,7 @@ SpriteRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9421c76dd97bc6746b4fea109e48bcd1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5265006, g: 0.5579053, b: 0.5924529, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -596,8 +596,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1177727721}
-  - {fileID: 97711451}
   - {fileID: 1199200280}
+  - {fileID: 97711451}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &472083644
@@ -895,7 +895,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 833687333}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1737396143}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: endGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &833687333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2702,6 +2714,7 @@ GameObject:
   - component: {fileID: 1737396142}
   - component: {fileID: 1737396141}
   - component: {fileID: 1737396140}
+  - component: {fileID: 1737396143}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -2793,6 +2806,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737396138}
   m_CullTransparentMesh: 1
+--- !u!114 &1737396143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737396138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadf40b9856ed9d41bbd477466ef01ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Refilwe_Test_Scene
 --- !u!1 &1822504720
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,7 +2901,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1822504723}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1737396143}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: changeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1822504723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3135,7 +3173,7 @@ GameObject:
   - component: {fileID: 2138200952}
   - component: {fileID: 2138200951}
   m_Layer: 3
-  m_Name: Background_Night (1)
+  m_Name: Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
