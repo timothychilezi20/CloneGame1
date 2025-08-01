@@ -37,7 +37,7 @@ public class LoadScene : MonoBehaviour
 
     public void resumeGame()
     {
-        pauseOptions.SetActive(true);//open pause menu
+        pauseOptions.SetActive(false);//open pause menu
         Time.timeScale = 1f;//pause game
     }
 }
