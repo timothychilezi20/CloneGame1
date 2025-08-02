@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
         flashEffect = GetComponent<SpriteFlashEffect>(); // NEW
     }
 
-    private void SetupLivesUI()
+    public void SetupLivesUI()
     {
         foreach (Transform child in lifePanel)
         {

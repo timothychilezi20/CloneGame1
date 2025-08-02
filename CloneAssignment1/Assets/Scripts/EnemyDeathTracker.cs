@@ -16,6 +16,7 @@ public class EnemyDeathTracker : MonoBehaviour
         if (enemyScript != null && enemyScript.health <= 0)
         {
             spawner.OnEnemyKilled();
+           
             Destroy(this); // Prevents calling multiple times
         }
     }

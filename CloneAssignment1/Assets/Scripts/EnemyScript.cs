@@ -1,29 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
     public float moveSpeed = 2f;
-    Rigidbody2D rb;
-    Transform target;
-    Vector2 moveDirection;
-
     public float health;
     public float maxHealth = 3f;
+
+    private Rigidbody2D rb;
+    private Transform target;
+    private Vector2 moveDirection;
+
+    // 👇 Add this
+    public bool isRepelled = false;
+    public Vector2 repelDirection;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    // Start is called before the first frame update
+
     void Start()
     {
-      target = GameObject.FindGameObjectWithTag("Player").transform;
-        health = maxHealth; 
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        health = maxHealth;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (target)
@@ -35,16 +36,23 @@ public class EnemyScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-       if (target)
+        if (target)
         {
-            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+            if (isRepelled)
+            {
+                rb.velocity = repelDirection * moveSpeed;
+            }
+            else
+            {
+                rb.velocity = moveDirection * moveSpeed;
+            }
         }
     }
 
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if(health <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }

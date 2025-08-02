@@ -16,7 +16,7 @@ TagManager:
   - Props
   - 'Enemy '
   - Player
-  - 
+  - SafeHouse'
   - 
   - 
   - 
@@ -53,6 +53,9 @@ TagManager:
     locked: 0
   - name: Props
     uniqueID: 1265458329
+    locked: 0
+  - name: Safe Zone
+    uniqueID: 993469769
     locked: 0
   - name: Enemy
     uniqueID: 1536596483
