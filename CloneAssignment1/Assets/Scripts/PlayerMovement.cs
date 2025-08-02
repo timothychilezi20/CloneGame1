@@ -42,8 +42,6 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask layerToHit;
 
-    private EnemyScript enemyScript;
-
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
