@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D rigidBody;
     private Vector2 moveInput;
-    public float jumpHeight; 
+   // public float jumpHeight; 
     public Animator animator;
     public GameObject Melee; 
     public Transform aim;
@@ -28,11 +28,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isWalking = false;
 
-    private bool canDash = true;
-    private bool isDashing;
-    public float dashingPower = 24f;
-    private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
+    //private bool canDash = true;
+    //private bool isDashing;
+    //public float dashingPower = 24f;
+    //private float dashingTime = 0.2f;
+    //private float dashingCooldown = 1f;
 
     [SerializeField] private TrailRenderer trailRenderer;
 
@@ -50,22 +50,7 @@ public class PlayerMovement : MonoBehaviour
         animator.GetComponent<Animator>(); 
     }
 
-    void Update()
-    {
-        if (!isDashing)
-        {
-            rigidBody.velocity = moveInput * moveSpeed;
-        }
 
-        if (isWalking)
-        {
-            Vector3 vector3 = Vector3.left * moveInput.x + Vector3.down * moveInput.y;
-            aim.rotation = Quaternion.LookRotation(Vector3.forward, vector3);
-        }
-
-        CheckMeleeTimer();
-        shootTimer += Time.deltaTime;
-    }
 
 
     public void Move(InputAction.CallbackContext context)
@@ -87,23 +72,6 @@ public class PlayerMovement : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
         animator.SetFloat("InputX", moveInput.x);
         animator.SetFloat("InputY", moveInput .y);
-    }
-
-    public void Jump(InputAction.CallbackContext context)
-    {
-        animator.SetBool("isJumping", true);
-
-        if (context.canceled)
-        {
-            animator.SetBool("isJumping", false);
-            animator.SetFloat("LastInputX", moveInput.x);
-            animator.SetFloat("LastInputY", moveInput.y);
-        }
-
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpHeight);
-        animator.SetFloat("InputX", moveInput.x);
-        animator.SetFloat("InputY", moveInput.y);
-
     }
 
     public void Attack(InputAction.CallbackContext context)
@@ -145,40 +113,6 @@ public class PlayerMovement : MonoBehaviour
             Destroy(intProjectile, 2f); 
         }
     }
-
-    public void Dash(InputAction.CallbackContext context)
-    {
-        if (canDash && context.performed)
-        {
-            StartCoroutine(Dash());
-        }
-    }
-
-
-    private IEnumerator Dash()
-    {
-        if(moveInput == Vector2.zero)
-            yield break;
-
-        canDash = false;
-        isDashing = true;
-
-        float originalGravity = rigidBody.gravityScale;
-        rigidBody.gravityScale = 0f;
-
-        rigidBody.velocity = moveInput.normalized * dashingPower; 
-
-        trailRenderer.emitting = true;
-        yield return new WaitForSeconds(dashingTime);
-        trailRenderer.emitting = false;
-
-        rigidBody.gravityScale = originalGravity;
-        isDashing = false;
-
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
-    }
-
 
     public void Explode(InputAction.CallbackContext context)
     {
