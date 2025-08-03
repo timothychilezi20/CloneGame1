@@ -42,14 +42,17 @@ TagManager:
   - name: Background
     uniqueID: 269660279
     locked: 0
+  - name: Ground
+    uniqueID: 3232832829
+    locked: 0
+  - name: Interior
+    uniqueID: 4241526153
+    locked: 0
   - name: Forest
     uniqueID: 2822601553
     locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Ground
-    uniqueID: 3232832829
     locked: 0
   - name: Props
     uniqueID: 1265458329
@@ -60,9 +63,9 @@ TagManager:
   - name: Enemy
     uniqueID: 1536596483
     locked: 0
-  - name: Player
-    uniqueID: 371015071
-    locked: 0
   - name: Gem
     uniqueID: 1916395129
+    locked: 0
+  - name: Player
+    uniqueID: 371015071
     locked: 0
