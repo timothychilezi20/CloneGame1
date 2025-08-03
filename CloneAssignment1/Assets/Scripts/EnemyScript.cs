@@ -10,10 +10,11 @@ public class EnemyScript : MonoBehaviour
     private Transform target;
     private Vector2 moveDirection;
 
-    // 👇 Add this
+    
     public bool isRepelled = false;
     public Vector2 repelDirection;
-    public GameObject lifeGemPrefab; // Assign in Inspector
+    public GameObject lifeGemPrefab;
+    public GameObject bloodEffect; 
 
     private void Awake()
     {
@@ -55,13 +56,21 @@ public class EnemyScript : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-             // 💎 Drop gem on death
-        if (lifeGemPrefab != null)
-        {
+            if (health <= 0)
+            {
+                if (bloodEffect != null)
+                {
+                    GameObject blood = Instantiate(bloodEffect, transform.position, Quaternion.identity);
+                    Destroy(blood, 2f); 
+                }
+            }
+            
+          if (lifeGemPrefab != null)
+          {
             Instantiate(lifeGemPrefab, transform.position, Quaternion.identity);
-        }
+          }
 
-        Destroy(gameObject);
+          Destroy(gameObject);
         }
     }
 }
