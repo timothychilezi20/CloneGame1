@@ -11,13 +11,15 @@ public class EnemyDeathTracker : MonoBehaviour
         enemyScript = GetComponent<EnemyScript>();
     }
 
-    private void Update()
+    public  void Update()
     {
         if (enemyScript != null && enemyScript.health <= 0)
         {
             spawner.OnEnemyKilled();
-           
-            Destroy(this); // Prevents calling multiple times
+
+          
+
+            Destroy(this); // Prevents multiple triggers
         }
     }
 }

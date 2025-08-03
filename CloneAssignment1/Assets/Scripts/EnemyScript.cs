@@ -13,6 +13,7 @@ public class EnemyScript : MonoBehaviour
     // 👇 Add this
     public bool isRepelled = false;
     public Vector2 repelDirection;
+    public GameObject lifeGemPrefab; // Assign in Inspector
 
     private void Awake()
     {
@@ -54,7 +55,13 @@ public class EnemyScript : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
+             // 💎 Drop gem on death
+        if (lifeGemPrefab != null)
+        {
+            Instantiate(lifeGemPrefab, transform.position, Quaternion.identity);
+        }
+
+        Destroy(gameObject);
         }
     }
 }

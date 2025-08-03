@@ -17,7 +17,7 @@ TagManager:
   - 'Enemy '
   - Player
   - SafeHouse'
-  - 
+  - Gem
   - 
   - 
   - 
@@ -62,4 +62,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 371015071
+    locked: 0
+  - name: Gem
+    uniqueID: 1916395129
     locked: 0

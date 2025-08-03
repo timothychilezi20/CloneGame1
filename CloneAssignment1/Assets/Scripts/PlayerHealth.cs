@@ -16,10 +16,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        currentLives = maxLives;
-        SetupLivesUI();
+        currentLives = Mathf.Clamp(currentLives, 0, maxLives); // Add this to clamp lives
 
-        flashEffect = GetComponent<SpriteFlashEffect>(); // NEW
+        if (currentLives == 0)
+            currentLives = maxLives; // If unset, start at full
+
+        SetupLivesUI();
+        flashEffect = GetComponent<SpriteFlashEffect>();
     }
 
     public void SetupLivesUI()
