@@ -61,7 +61,7 @@ public class EnemyScript : MonoBehaviour
                 if (bloodEffect != null)
                 {
                     GameObject blood = Instantiate(bloodEffect, transform.position, Quaternion.identity);
-                    Destroy(blood, 2f); 
+                    Destroy(blood, 2f);
                 }
             }
             

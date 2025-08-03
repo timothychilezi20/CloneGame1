@@ -14353,6 +14353,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 0}
+--- !u!95 &658262047
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658262029}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6fae65108baaece45b2fb4a4580b5396, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &662385681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56185,10 +56206,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 70.27602, y: 16.453365}
+    - - {x: 70.20884, y: 16.438435}
       - {x: -27.85022, y: 16.601255}
       - {x: -27.711054, y: -25.259218}
-      - {x: 70.4153, y: -25.307287}
+      - {x: 70.20575, y: -25.33348}
   m_UseDelaunayMesh: 0
 --- !u!1001 &968283817
 PrefabInstance:
@@ -57071,6 +57092,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5111192691502699321, guid: f0717d356c891fb40a2f552907c1a2d8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 658262041}
+    - targetCorrespondingSourceObject: {fileID: 5111192691502699321, guid: f0717d356c891fb40a2f552907c1a2d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 658262047}
   m_SourcePrefab: {fileID: 100100000, guid: f0717d356c891fb40a2f552907c1a2d8, type: 3}
 --- !u!1 &1672285691
 GameObject:
