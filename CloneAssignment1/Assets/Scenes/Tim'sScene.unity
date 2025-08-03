@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 582724412}
   - component: {fileID: 582724411}
   - component: {fileID: 582724414}
+  - component: {fileID: 582724415}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -250,6 +251,20 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &582724415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582724410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc8487923e3cbc4982af24989dc562b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.3
+  magnitude: 0.3
 --- !u!1 &998112988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1102,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 371015071
       objectReference: {fileID: 0}
+    - target: {fileID: 4340661011387577732, guid: 1197ac37940dac94d9a257dc673fa241, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4980146592439854464, guid: 1197ac37940dac94d9a257dc673fa241, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -1159,6 +1178,10 @@ PrefabInstance:
       propertyPath: layerToHit.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 7980542436852814329, guid: 1197ac37940dac94d9a257dc673fa241, type: 3}
+      propertyPath: slashEffectPrefab
+      value: 
+      objectReference: {fileID: 555534069000459316, guid: f3ae2f785ae84ad4980c679a23650e6c, type: 3}
     - target: {fileID: 8415198092794899199, guid: 1197ac37940dac94d9a257dc673fa241, type: 3}
       propertyPath: m_ActionEvents.Array.size
       value: 18
@@ -1251,6 +1274,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 208396882201943806, guid: f0717d356c891fb40a2f552907c1a2d8, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 1099948160570832517, guid: c57e2a52570c44f4c9fa60fa44fcb83c, type: 3}
     - target: {fileID: 476292983402704774, guid: f0717d356c891fb40a2f552907c1a2d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.65696

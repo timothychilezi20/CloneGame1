@@ -12,6 +12,8 @@ public class EnemyScript : MonoBehaviour
     public float health;
     public float maxHealth = 3f;
 
+    [SerializeField] private GameObject bloodEffect;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,8 +46,15 @@ public class EnemyScript : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if(health <= 0)
+
+        if (health <= 0)
         {
+            if (bloodEffect != null)
+            {
+                GameObject blood = Instantiate(bloodEffect, transform.position, Quaternion.identity);
+                Destroy(blood, 2f); // Destroy after 2 seconds
+            }
+
             Destroy(gameObject);
         }
     }

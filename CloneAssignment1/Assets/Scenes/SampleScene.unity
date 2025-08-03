@@ -9329,6 +9329,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e00a6cca-3c94-41cd-b85f-5db6f0a34b3c
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d3b8fe6d-5ccc-4efe-bee1-dad25f16c309
+    m_ActionName: Player/Attack[/Keyboard/f,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4ee3f7cc-d097-4c06-99e5-d3db7cb7652e
+    m_ActionName: Player/Shoot[/Mouse/rightButton,/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: df0af25b-aeba-4781-abcd-eeabac58c29b
+    m_ActionName: Player/Dash[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: da1282f6-a596-49ec-a112-9f58eac3f01b
+    m_ActionName: Player/Explode[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -50703,6 +50719,10 @@ PrefabInstance:
     - target: {fileID: 1725930671137853298, guid: 1197ac37940dac94d9a257dc673fa241, type: 3}
       propertyPath: m_Name
       value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725930671137853298, guid: 1197ac37940dac94d9a257dc673fa241, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3445810992369996864, guid: 1197ac37940dac94d9a257dc673fa241, type: 3}
       propertyPath: m_SortingLayer

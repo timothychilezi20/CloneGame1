@@ -42,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask layerToHit;
 
+    public GameObject slashEffectPrefab;
+
+    private Vector2 lastMoveDir = Vector2.right; 
+
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -85,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
         animator.SetFloat("InputX", moveInput.x);
         animator.SetFloat("InputY", moveInput .y);
+
+        if (moveInput != Vector2.zero)
+        {
+            lastMoveDir = moveInput.normalized;
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -106,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
+        Instantiate(slashEffectPrefab, aim.position, aim.rotation);
 
         Melee.SetActive(true);
         isAttacking = true; 
@@ -117,6 +127,14 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("LastInputX", moveInput.x);
             animator.SetFloat("LastInputY", moveInput.y);
         }
+
+        Vector3 spawnDirection = lastMoveDir;
+        float angle = Mathf.Atan2(spawnDirection.y, spawnDirection.x) * Mathf.Rad2Deg;
+
+        Quaternion slashRotation = Quaternion.Euler(0, 0, angle);
+
+        Instantiate(slashEffectPrefab, transform.position, slashRotation);
+
     }
 
     private void CheckMeleeTimer()
@@ -180,6 +198,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Explode(InputAction.CallbackContext context)
     {
+        FindObjectOfType<CameraShakeScript>().StartShake();
+
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, fieldOfImpact, layerToHit);
 
         foreach(Collider2D obj in objects)
@@ -194,6 +214,8 @@ public class PlayerMovement : MonoBehaviour
 
             Destroy(obj.gameObject); 
         }
+
+        
     }
 
     private void OnDrawGizmosSelected()
