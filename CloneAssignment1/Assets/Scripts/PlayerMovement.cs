@@ -23,8 +23,7 @@ public class PlayerMovement : MonoBehaviour
     float shootCooldown = 0.25f;
     float shootTimer = 0.5f; 
 
-    private Vector2 lastInputDirection;
-    private Vector2 rollInput; 
+    private Vector2 lastInputDirection; 
 
     private bool isWalking = false;
 
