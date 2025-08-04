@@ -27,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isWalking = false;
 
-    private bool canDash = true;
-    private bool isDashing;
+    public bool canDash = false;
+    public bool isDashing = false;
     public float dashingPower = 24f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;

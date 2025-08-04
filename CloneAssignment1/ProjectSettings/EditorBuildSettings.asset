@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Sprites/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Sprites/Scenes/Main_Menu.unity
     guid: 12a75fa991deb8c4985be8bff60cb234
   - enabled: 1
+    path: Assets/Sprites/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Sprites/Scenes/Tshego Scene.unity
+    guid: 40fa6926fc3ec224288ce0d400e9d40f
+  - enabled: 0
     path: Assets/Scenes/Refilwe_Test_Scene.unity
     guid: db17d235731f74046a35628e8bfdbaf7
   m_configObjects: {}
