@@ -17,6 +17,6 @@ public class EnemySafeZoneRepel : MonoBehaviour
         if (zoneCenter == null) return;
 
         Vector2 repelDirection = (rb.position - (Vector2)zoneCenter.position).normalized;
-        rb.linearVelocity = repelDirection * repelForce;
+        rb.velocity = repelDirection * repelForce;
     }
 }

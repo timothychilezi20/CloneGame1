@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D rigidBody;
     private Vector2 moveInput;
-   // public float jumpHeight; 
+    public float jumpHeight; 
     public Animator animator;
     public GameObject Melee; 
     public Transform aim;
@@ -28,11 +28,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isWalking = false;
 
-    //private bool canDash = true;
-    //private bool isDashing;
-    //public float dashingPower = 24f;
-    //private float dashingTime = 0.2f;
-    //private float dashingCooldown = 1f;
+    private bool canDash = true;
+    private bool isDashing;
+    public float dashingPower = 24f;
+    private float dashingTime = 0.2f;
+    private float dashingCooldown = 1f;
 
     [SerializeField] private TrailRenderer trailRenderer;
 
@@ -42,7 +42,9 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask layerToHit;
 
-    private EnemyScript enemyScript;
+    public GameObject slashEffectPrefab;
+
+    private Vector2 lastMoveDir = Vector2.right; 
 
     private void Start()
     {
@@ -50,16 +52,22 @@ public class PlayerMovement : MonoBehaviour
         animator.GetComponent<Animator>(); 
     }
 
-<<<<<<< Updated upstream
-=======
     void Update()
     {
         if (!isDashing)
         {
-            rigidBody.linearVelocity = moveInput * moveSpeed;
+            rigidBody.velocity = moveInput * moveSpeed;
         }
->>>>>>> Stashed changes
 
+        if (isWalking)
+        {
+            Vector3 vector3 = Vector3.left * moveInput.x + Vector3.down * moveInput.y;
+            aim.rotation = Quaternion.LookRotation(Vector3.forward, vector3);
+        }
+
+        CheckMeleeTimer();
+        shootTimer += Time.deltaTime;
+    }
 
 
     public void Move(InputAction.CallbackContext context)
@@ -81,8 +89,6 @@ public class PlayerMovement : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
         animator.SetFloat("InputX", moveInput.x);
         animator.SetFloat("InputY", moveInput .y);
-<<<<<<< Updated upstream
-=======
 
         if (moveInput != Vector2.zero)
         {
@@ -101,15 +107,15 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("LastInputY", moveInput.y);
         }
 
-        rigidBody.linearVelocity = new Vector2(rigidBody.linearVelocity.x, jumpHeight);
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpHeight);
         animator.SetFloat("InputX", moveInput.x);
         animator.SetFloat("InputY", moveInput.y);
 
->>>>>>> Stashed changes
     }
 
     public void Attack(InputAction.CallbackContext context)
     {
+        Instantiate(slashEffectPrefab, aim.position, aim.rotation);
 
         Melee.SetActive(true);
         isAttacking = true; 
@@ -121,6 +127,14 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("LastInputX", moveInput.x);
             animator.SetFloat("LastInputY", moveInput.y);
         }
+
+        Vector3 spawnDirection = lastMoveDir;
+        float angle = Mathf.Atan2(spawnDirection.y, spawnDirection.x) * Mathf.Rad2Deg;
+
+        Quaternion slashRotation = Quaternion.Euler(0, 0, angle);
+
+        Instantiate(slashEffectPrefab, transform.position, slashRotation);
+
     }
 
     private void CheckMeleeTimer()
@@ -148,8 +162,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-=======
     public void Dash(InputAction.CallbackContext context)
     {
         if (canDash && context.performed)
@@ -170,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
         float originalGravity = rigidBody.gravityScale;
         rigidBody.gravityScale = 0f;
 
-        rigidBody.linearVelocity = moveInput.normalized * dashingPower; 
+        rigidBody.velocity = moveInput.normalized * dashingPower; 
 
         trailRenderer.emitting = true;
         yield return new WaitForSeconds(dashingTime);
@@ -184,9 +196,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
->>>>>>> Stashed changes
     public void Explode(InputAction.CallbackContext context)
     {
+        FindObjectOfType<CameraShakeScript>().StartShake();
+
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, fieldOfImpact, layerToHit);
 
         foreach(Collider2D obj in objects)
@@ -201,6 +214,8 @@ public class PlayerMovement : MonoBehaviour
 
             Destroy(obj.gameObject); 
         }
+
+        
     }
 
     private void OnDrawGizmosSelected()
