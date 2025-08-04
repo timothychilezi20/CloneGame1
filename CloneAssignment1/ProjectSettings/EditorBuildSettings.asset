@@ -15,3 +15,4 @@ EditorBuildSettings:
     path: Assets/Scenes/Refilwe_Test_Scene.unity
     guid: db17d235731f74046a35628e8bfdbaf7
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

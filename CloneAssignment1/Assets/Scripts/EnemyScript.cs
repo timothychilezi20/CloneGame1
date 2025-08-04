@@ -37,7 +37,18 @@ public class EnemyScript : MonoBehaviour
     {
        if (target)
         {
+<<<<<<< Updated upstream
             rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+=======
+            if (isRepelled)
+            {
+                rb.linearVelocity = repelDirection * moveSpeed;
+            }
+            else
+            {
+                rb.linearVelocity = moveDirection * moveSpeed;
+            }
+>>>>>>> Stashed changes
         }
     }
 

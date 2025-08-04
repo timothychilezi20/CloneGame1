@@ -50,6 +50,15 @@ public class PlayerMovement : MonoBehaviour
         animator.GetComponent<Animator>(); 
     }
 
+<<<<<<< Updated upstream
+=======
+    void Update()
+    {
+        if (!isDashing)
+        {
+            rigidBody.linearVelocity = moveInput * moveSpeed;
+        }
+>>>>>>> Stashed changes
 
 
 
@@ -72,6 +81,31 @@ public class PlayerMovement : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
         animator.SetFloat("InputX", moveInput.x);
         animator.SetFloat("InputY", moveInput .y);
+<<<<<<< Updated upstream
+=======
+
+        if (moveInput != Vector2.zero)
+        {
+            lastMoveDir = moveInput.normalized;
+        }
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        animator.SetBool("isJumping", true);
+
+        if (context.canceled)
+        {
+            animator.SetBool("isJumping", false);
+            animator.SetFloat("LastInputX", moveInput.x);
+            animator.SetFloat("LastInputY", moveInput.y);
+        }
+
+        rigidBody.linearVelocity = new Vector2(rigidBody.linearVelocity.x, jumpHeight);
+        animator.SetFloat("InputX", moveInput.x);
+        animator.SetFloat("InputY", moveInput.y);
+
+>>>>>>> Stashed changes
     }
 
     public void Attack(InputAction.CallbackContext context)
@@ -114,6 +148,43 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    public void Dash(InputAction.CallbackContext context)
+    {
+        if (canDash && context.performed)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+
+    private IEnumerator Dash()
+    {
+        if(moveInput == Vector2.zero)
+            yield break;
+
+        canDash = false;
+        isDashing = true;
+
+        float originalGravity = rigidBody.gravityScale;
+        rigidBody.gravityScale = 0f;
+
+        rigidBody.linearVelocity = moveInput.normalized * dashingPower; 
+
+        trailRenderer.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        trailRenderer.emitting = false;
+
+        rigidBody.gravityScale = originalGravity;
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+    }
+
+
+>>>>>>> Stashed changes
     public void Explode(InputAction.CallbackContext context)
     {
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, fieldOfImpact, layerToHit);
