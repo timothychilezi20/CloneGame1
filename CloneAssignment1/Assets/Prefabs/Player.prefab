@@ -299,6 +299,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4ee3f7cc-d097-4c06-99e5-d3db7cb7652e
     m_ActionName: Player/Shoot[/Mouse/rightButton,/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: df0af25b-aeba-4781-abcd-eeabac58c29b
+    m_ActionName: Player/Dash[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: da1282f6-a596-49ec-a112-9f58eac3f01b
+    m_ActionName: Player/Explode[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -323,6 +331,14 @@ MonoBehaviour:
   aim: {fileID: 4340661011387577732}
   projectile: {fileID: 359515292604142105, guid: 26ff299059e110d45845e17a0bbc0016, type: 3}
   fireForce: 20
+  dashingPower: 24
+  trailRenderer: {fileID: 0}
+  fieldOfImpact: 0
+  force: 0
+  layerToHit:
+    serializedVersion: 2
+    m_Bits: 0
+  slashEffectPrefab: {fileID: 555534069000459316, guid: f3ae2f785ae84ad4980c679a23650e6c, type: 3}
 --- !u!95 &8439793490503972223
 Animator:
   serializedVersion: 5
