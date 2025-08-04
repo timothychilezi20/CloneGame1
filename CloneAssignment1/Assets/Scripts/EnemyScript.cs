@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -10,10 +11,14 @@ public class EnemyScript : MonoBehaviour
     private Transform target;
     private Vector2 moveDirection;
 
-    // 👇 Add this
+    
     public bool isRepelled = false;
     public Vector2 repelDirection;
-    public GameObject lifeGemPrefab; // Assign in Inspector
+    public GameObject lifeGemPrefab;
+    public GameObject bloodEffect;
+    public GameObject points; 
+
+    private XPManager xpManager;
 
     private void Awake()
     {
@@ -33,6 +38,8 @@ public class EnemyScript : MonoBehaviour
             Vector3 direction = (target.position - transform.position).normalized;
             moveDirection = direction;
         }
+
+        
     }
 
     private void FixedUpdate()
@@ -53,15 +60,42 @@ public class EnemyScript : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+
         if (health <= 0)
         {
-             // 💎 Drop gem on death
-        if (lifeGemPrefab != null)
-        {
-            Instantiate(lifeGemPrefab, transform.position, Quaternion.identity);
-        }
 
-        Destroy(gameObject);
+            if (health <= 0)
+            {
+                if (bloodEffect != null)
+                {
+                    GameObject blood = Instantiate(bloodEffect, transform.position, Quaternion.identity);
+                    Destroy(blood, 2f);
+                }
+            }
+
+            if (points != null)
+            {
+                GameObject popUp = Instantiate(points, transform.position, Quaternion.identity);
+                Destroy(popUp, 1f);
+                Debug.Log("XP Added");
+                
+            }
+
+            XPManager xpManager = FindObjectOfType<XPManager>();
+            if (xpManager != null)
+            {
+                xpManager.addXPPoints(5);
+            }
+
+
+            if (lifeGemPrefab != null)
+          {
+            Instantiate(lifeGemPrefab, transform.position, Quaternion.identity);
+          }
+
+          Destroy(gameObject);
+         
+
         }
     }
 }

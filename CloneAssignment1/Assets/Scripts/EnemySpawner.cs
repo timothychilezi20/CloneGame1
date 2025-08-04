@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;           // Assign your enemy prefab here
-    public int numberToSpawn = 5;            // Number of enemies to spawn
-    public List<Transform> spawnPoints;      // Drag in multiple empty spawn points
+    public GameObject enemyPrefab;          
+    public int numberToSpawn = 5;            
+    public List<Transform> spawnPoints;      
 
     private int enemiesAlive;
 
@@ -31,7 +31,6 @@ public class EnemySpawner : MonoBehaviour
         if (enemiesAlive <= 0)
         {
             Debug.Log("All enemies defeated! You win!");
-            // You can add door open, next level, etc. here.
         }
     }
 }
