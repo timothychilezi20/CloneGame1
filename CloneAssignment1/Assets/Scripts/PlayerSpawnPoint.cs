@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerSpawnPoint : MonoBehaviour
 {
     public GameObject player;
     public Transform playerSpawner;
+    public CinemachineVirtualCamera playerCamera;
  
 
     private void Start()
@@ -17,7 +19,8 @@ public class PlayerSpawnPoint : MonoBehaviour
     {
         if(player!=null && playerSpawner != null)
         {
-            Instantiate(player, playerSpawner.position, playerSpawner.rotation);
+            player.transform.position = playerSpawner.transform.position;
+            playerCamera.Follow = player.transform;
         }
         else
         {
