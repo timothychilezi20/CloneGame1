@@ -40,4 +40,9 @@ public class LoadScene : MonoBehaviour
         pauseOptions.SetActive(false);//open pause menu
         Time.timeScale = 1f;//pause game
     }
+
+    public void restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
