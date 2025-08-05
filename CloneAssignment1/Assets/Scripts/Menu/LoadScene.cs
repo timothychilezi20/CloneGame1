@@ -8,6 +8,8 @@ public class LoadScene : MonoBehaviour
     public string sceneName;//name of the scene 
     public GameObject controlsOptions;
     public GameObject pauseOptions;
+    public GameObject gameOverCanvas;
+    private PlayerHealth playerHP;
     public void changeScene()//change to the specified scene
     {
         SceneManager.LoadScene(sceneName);
@@ -45,4 +47,13 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    //public void gameOver()
+    //{
+    //    if (playerHP.currentLives == 0)
+    //    {
+    //        Debug.Log("Trigger Game Over!");
+    //        gameOverCanvas.SetActive(true);
+    //    }
+    //}
 }

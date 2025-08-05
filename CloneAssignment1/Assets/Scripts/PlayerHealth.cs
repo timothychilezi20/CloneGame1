@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
 
     private SpriteFlashEffect flashEffect; // NEW
 
+    public GameObject gameOverCanvas;
+
     private void Start()
     {
         currentLives = Mathf.Clamp(currentLives, 0, maxLives); // Add this to clamp lives
@@ -64,5 +66,6 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Player Died!");
         Destroy(gameObject);
+        gameOverCanvas.SetActive(true);
     }
 }
