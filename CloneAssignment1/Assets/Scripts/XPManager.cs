@@ -7,22 +7,53 @@ using UnityEngine;
 
 public class XPManager : MonoBehaviour
 {
+    public static XPManager instance;
     public int xpPoints;
-    public TextMeshProUGUI xpText;
 
-    public void Start()
+    private void Awake()
     {
-        UpdateXPText(); 
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        UpdateUI();
     }
 
     public void addXPPoints(int amount)
     {
         xpPoints += amount;
-        UpdateXPText(); 
+        UpdateUI();
     }
 
-    private void UpdateXPText()
+    public bool TrySpendXP(int amount)
     {
-        xpText.text = "XP:" +xpPoints;
+        if (xpPoints >= amount)
+        {
+            xpPoints -= amount;
+            UpdateUI();
+            return true;
+        }
+        return false;
+    }
+
+    private void UpdateUI()
+    {
+        if (XPUIManager.Instance != null)
+        {
+            XPUIManager.Instance.UpdateXPText(xpPoints);
+        }
+        else
+        {
+            Debug.LogWarning("XPUIManager Instance not found.");
+        }
     }
 }
