@@ -24,6 +24,7 @@ public class closeGateTrigger : MonoBehaviour
         thisCollider.enabled = true;
         runningTime = false;
         secondRound = false;
+        closeGate.SetActive(false);
     }
 
     void Update()
@@ -42,6 +43,10 @@ public class closeGateTrigger : MonoBehaviour
             int minutes = Mathf.FloorToInt(elapsedTime / 60);
             int seconds = Mathf.FloorToInt(elapsedTime % 60);
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            //while (elapsedTime < endBreakTime)
+            //{
+            //    //stop spawning enemies
+            //}
             if (elapsedTime >= endBreakTime && runningTime == false)
             {
                 secondRound = true;
@@ -54,6 +59,7 @@ public class closeGateTrigger : MonoBehaviour
             {
                 runningTime = false;
                 timerText.text = string.Format("{0:00}:{1:00}", 0, 0);
+                //stop spawning enemies
                 //remainingTime = 0;
                 closeGate.SetActive(false);
             }
