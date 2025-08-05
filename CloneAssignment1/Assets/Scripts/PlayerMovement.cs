@@ -33,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
 
+    public bool canShoot = false;
+
+    public bool canExplode = false; 
+
     [SerializeField] private TrailRenderer trailRenderer;
 
     public float fieldOfImpact;
@@ -152,15 +156,24 @@ public class PlayerMovement : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (shootTimer > shootCooldown)
+        if (context.started && canShoot)
         {
-            shootTimer = 0;
-            GameObject intProjectile = Instantiate(projectile, aim.position, aim.rotation);
-            intProjectile.GetComponent<Rigidbody2D>().AddForce(-aim.up * fireForce, ForceMode2D.Impulse);
-            Destroy(intProjectile, 2f); 
+            StartCoroutine(Shoot()); 
         }
     }
 
+    private IEnumerator Shoot()
+    {
+        canShoot = false;
+
+        GameObject intProjectile = Instantiate(projectile, aim.position, aim.rotation);
+        intProjectile.GetComponent<Rigidbody2D>().AddForce(-aim.up * fireForce, ForceMode2D.Impulse);
+        Destroy(intProjectile, 2f);
+
+        yield return new WaitForSeconds(shootCooldown);
+
+        canShoot= true;
+    }
     public void Dash(InputAction.CallbackContext context)
     {
         if (canDash && context.performed)
@@ -197,24 +210,35 @@ public class PlayerMovement : MonoBehaviour
 
     public void Explode(InputAction.CallbackContext context)
     {
+        if (canExplode && context.performed)
+        {
+            StartCoroutine(Explosion());    
+        }
+        
+    }
+
+    private IEnumerator Explosion()
+    {
         FindObjectOfType<CameraShakeScript>().StartShake();
+
+        yield return new WaitForSeconds(0.1f);
 
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, fieldOfImpact, layerToHit);
 
-        foreach(Collider2D obj in objects)
+        foreach (Collider2D obj in objects)
         {
             Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
 
-            if(rb != null)
+            if (rb != null)
             {
                 Vector2 direction = obj.transform.position - transform.position;
                 rb.AddForce(direction.normalized * force, ForceMode2D.Impulse);
             }
 
-            Destroy(obj.gameObject); 
+            Destroy(obj.gameObject);
         }
 
-        
+        yield return null; 
     }
 
     private void OnDrawGizmosSelected()

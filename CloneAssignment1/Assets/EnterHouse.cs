@@ -28,4 +28,10 @@ public class EnterHouse : MonoBehaviour
     {
         SceneManager.LoadScene("Tshego Scene"); 
     }
+
+
+    public void Exit()
+    {
+        SceneManager.LoadScene("SampleScene"); 
+    }
 }

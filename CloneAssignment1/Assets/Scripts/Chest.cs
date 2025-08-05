@@ -13,7 +13,18 @@ public class Chest : MonoBehaviour
 
     public bool activateDashAbility = false;
 
+    public bool activateShootAbility = false;
+
+    public bool activateExplosionAbility = false; 
+
     private bool isOpened = false;
+
+    public void Awake()
+    {
+        dashImage.SetActive(false);
+        projectileImage.SetActive(false);  
+        explosionImage.SetActive(false);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -27,10 +38,34 @@ public class Chest : MonoBehaviour
 
                 if (activateDashAbility)
                 {
+                    
                     PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
                     if (playerMovement != null)
                     {
                         playerMovement.canDash = true;
+                        AbilityUIManager.Instance.UnlockDash();
+                    }
+                }
+
+                if (activateShootAbility)
+                {
+                   
+                    PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
+                    if (playerMovement != null)
+                    {
+                        playerMovement.canShoot = true;
+                        AbilityUIManager.Instance.UnlockProjectile();
+                    }
+                }
+
+                if (activateExplosionAbility)
+                {
+                   
+                    PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
+                    if (playerMovement != null)
+                    {
+                        playerMovement.canExplode = true;
+                        AbilityUIManager.Instance.UnlockExplosion();
                     }
                 }
             }
