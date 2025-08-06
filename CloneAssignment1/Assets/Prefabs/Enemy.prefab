@@ -180,6 +180,6 @@ MonoBehaviour:
   maxHealth: 3
   isRepelled: 0
   repelDirection: {x: 0, y: 0}
-  lifeGemPrefab: {fileID: 0}
-  bloodEffect: {fileID: 0}
-  points: {fileID: 0}
+  lifeGemPrefab: {fileID: 863706646883329664, guid: ba554d95aa65c124da245c866d21bbfe, type: 3}
+  bloodEffect: {fileID: 1099948160570832517, guid: c57e2a52570c44f4c9fa60fa44fcb83c, type: 3}
+  points: {fileID: 2294545195356593672, guid: c1a004cdfacdef7469b5aff084635278, type: 3}
