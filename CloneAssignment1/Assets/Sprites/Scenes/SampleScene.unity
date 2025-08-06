@@ -60009,6 +60009,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1863827486}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1188989354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1188989356}
+  - component: {fileID: 1188989355}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1188989355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188989354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef887bc7fd66cf459b70839e38f18e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 7889300771673354103, guid: 1197ac37940dac94d9a257dc673fa241, type: 3}
+  enemyPrefabs:
+  - {fileID: 5111192691502699321, guid: f0717d356c891fb40a2f552907c1a2d8, type: 3}
+  - {fileID: 5939559559856483282, guid: 7cc5326c096fff94eb7ae1b82a85b89c, type: 3}
+  spawnRadius: 10
+  startSpawnInterval: 2
+  minSpawnInterval: 0.2
+  difficultyRamp: 0.01
+  tier2Time: 30
+  tier3Time: 60
+--- !u!4 &1188989356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188989354}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.4871273, y: -16.776197, z: 0.22516465}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1194666857
 GameObject:
   m_ObjectHideFlags: 0
@@ -60088,7 +60142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1319244317
 Transform:
   m_ObjectHideFlags: 0
@@ -60510,7 +60564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6247462758958562611, guid: f0717d356c891fb40a2f552907c1a2d8, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6247462758958562611, guid: f0717d356c891fb40a2f552907c1a2d8, type: 3}
       propertyPath: m_SortingLayerID
@@ -61530,3 +61584,4 @@ SceneRoots:
   - {fileID: 1863827486}
   - {fileID: 926541719}
   - {fileID: 386509469}
+  - {fileID: 1188989356}
